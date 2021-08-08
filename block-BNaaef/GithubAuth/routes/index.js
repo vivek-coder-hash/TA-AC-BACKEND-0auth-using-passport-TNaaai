@@ -27,6 +27,21 @@ router.get('/auth/github/callback',
   });  // In this route github will return us fail or success
 
 
+  //passport google route
+
+router.get(
+  '/auth/google',
+  passport.authenticate('google', { scope: 'https://www.google.com/m8/feeds' })
+);
+
+router.get(
+  '/auth/google/callback',
+  passport.authenticate('google', { failureRedirect: '/failure' }),
+  function (req, res) {
+    // Successful authentication, redirect home.
+    res.redirect('/success');
+  }
+);
 
   router.get('/logout', (req, res)=> {
     req.session.destroy()
