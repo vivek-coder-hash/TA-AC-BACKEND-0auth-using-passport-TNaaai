@@ -12,7 +12,7 @@ var flash = require('connect-flash');
 require("dotenv").config()
 
 //connect to database
-mongoose.connect("mongodb://localhost/Github-Auth" , {useNewUrlParser:true , useUnifiedTopology:true}, (err)=> {
+mongoose.connect("mongodb://localhost/Github-Google-Auth" , {useNewUrlParser:true , useUnifiedTopology:true}, (err)=> {
   console.log(err ? err : "connected to database")
 })
 
@@ -41,7 +41,7 @@ app.use(session({
   resave:false ,
   saveUninitialized:false ,
   store: MongoStore.create({
-    mongoUrl: 'mongodb://localhost/Github-Auth',
+    mongoUrl: 'mongodb://localhost/Github-Google-Auth',
     autoRemove: 'native' // Default
   })
 }))
